@@ -1,0 +1,1 @@
+web: java -jar target/icash-1.0-SNAPSHOT.jar

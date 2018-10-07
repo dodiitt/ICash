@@ -1,2 +1,3 @@
-com\icash\controller\HomeController.class
 com\icash\ICashApplication.class
+com\icash\controller\HomeController.class
+com\icash\utils\ApplicationInstant.class
