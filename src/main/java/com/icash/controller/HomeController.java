@@ -12,4 +12,9 @@ public class HomeController {
     public String homePage(){
         return ApplicationInstant.HOME_HTML;
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String defaultPath(){
+        return ApplicationInstant.HOME_HTML;
+    }
 }
