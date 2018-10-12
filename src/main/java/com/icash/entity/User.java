@@ -22,6 +22,8 @@ public class User {
 
     private String level;
 
+    private String referenceLink;
+
     public String getUserID() {
         return userID;
     }
@@ -100,5 +102,13 @@ public class User {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getReferenceLink() {
+        return referenceLink;
+    }
+
+    public void setReferenceLink(String referenceLink) {
+        this.referenceLink = referenceLink;
     }
 }

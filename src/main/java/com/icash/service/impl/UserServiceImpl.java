@@ -21,4 +21,10 @@ public class UserServiceImpl implements UserService {
     public User loadUserByEmail(String email) {
         return null;
     }
+
+    @Override
+    public boolean isUserExist(String email) {
+        User user = this.loadUserByEmail(email);
+        return user != null;
+    }
 }
