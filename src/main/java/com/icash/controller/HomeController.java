@@ -8,13 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = ApplicationInstant.HOME_URL, method = RequestMethod.GET)
+    @RequestMapping(value = {ApplicationInstant.HOME_URL, "/"}, method = RequestMethod.GET)
     public String homePage(){
-        return ApplicationInstant.HOME_HTML;
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String defaultPath(){
         return ApplicationInstant.HOME_HTML;
     }
 }

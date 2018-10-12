@@ -1,5 +1,8 @@
 package com.icash.configuration.security;
 
+import com.icash.handler.security.CustomAuthenticationEntryPoint;
+import com.icash.handler.security.CustomSecurityHandler;
+import com.icash.utils.ApplicationInstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,12 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private CustomSecurityHandler customSecurityHandler;
+
+    @Autowired
+    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
+    @Autowired
     private DataSource dataSource;
 
     @Bean
@@ -24,11 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .usersByUsernameQuery("users query")
-                .authoritiesByUsernameQuery("role queries")
-                .dataSource(dataSource)
-                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(customSecurityHandler).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -41,6 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .anyRequest().authenticated();
+                .antMatchers(ApplicationInstant.LOGIN_URL).permitAll()
+                .antMatchers(ApplicationInstant.LOG_OUT).permitAll()
+                .anyRequest().authenticated().and()
+                .httpBasic().authenticationEntryPoint(customAuthenticationEntryPoint);
     }
 }
