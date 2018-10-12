@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+@Component("adminNotificationHandler")
 public class AdminNotificationHandler extends AbstractNotificationService {
 
     private static final Log LOG = LogFactory.getLog(AdminNotificationHandler.class);
@@ -23,7 +23,7 @@ public class AdminNotificationHandler extends AbstractNotificationService {
     private MailMessageConfig adminMailProperties;
 
     @Override
-    public void notify(String message) {
+    public void notify(String userID, String message) {
 
     }
 

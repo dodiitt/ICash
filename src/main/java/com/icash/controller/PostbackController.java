@@ -23,6 +23,14 @@ public class PostbackController {
     @Qualifier("superRewardsHandler")
     private ProviderHandler superRewardsHandler;
 
+    @Autowired
+    @Qualifier("peanutLabsHandler")
+    private ProviderHandler peanutLabsHandler;
+
+    @Autowired
+    @Qualifier("sampleCubeHandler")
+    private ProviderHandler sampleCubeHandler;
+
     @RequestMapping(value = "/offer-toro", method = RequestMethod.GET)
     protected void processOfferToroPostBack(){
         offerToroHandler.handle(null);
@@ -35,11 +43,11 @@ public class PostbackController {
 
     @RequestMapping(value = "/peanut-labs", method = RequestMethod.GET)
     protected void processPeanutLabsPostBack(){
-
+        peanutLabsHandler.handle(null);
     }
 
     @RequestMapping(value = "/sample-cube", method = RequestMethod.GET)
     protected void processSampleCube(){
-
+        sampleCubeHandler.handle(null);
     }
 }
