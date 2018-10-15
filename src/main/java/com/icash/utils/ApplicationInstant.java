@@ -1,13 +1,14 @@
 package com.icash.utils;
 
 public class ApplicationInstant {
-    public static final String HOME_URL = "/home";
-    public static final String HOME_HTML = "home";
+    /**
+     * Security
+     */
+    public static final String ICASH_REALM = "ICash_Realm";
 
 
     /**
      * COMMONS URL
      */
-    public static final String LOGIN_URL = "/users/login";
-    public static final String LOG_OUT = "/users/log-out";
+    public static final String PUBLIC_URL = "/public/**";
 }

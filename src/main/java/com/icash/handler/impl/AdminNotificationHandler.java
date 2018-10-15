@@ -16,11 +16,11 @@ public class AdminNotificationHandler extends AbstractNotificationService {
 
     private static final Log LOG = LogFactory.getLog(AdminNotificationHandler.class);
 
-    @Autowired
-    private MailSender javaMailSender;
-
-    @Autowired
-    private MailMessageConfig adminMailProperties;
+//    @Autowired
+//    private MailSender javaMailSender;
+//
+//    @Autowired
+//    private MailMessageConfig adminMailProperties;
 
     @Override
     public void notify(String userID, String message) {
@@ -29,11 +29,11 @@ public class AdminNotificationHandler extends AbstractNotificationService {
 
     @Override
     protected List<String> getRecipientsEmail(String userID) {
-        return Arrays.asList(adminMailProperties.getTo());
+        return null;
     }
 
     @Override
     protected List<String> getCCEmail() {
-        return Arrays.asList(adminMailProperties.getCc());
+        return null;
     }
 }

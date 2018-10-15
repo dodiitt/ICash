@@ -1,28 +1,60 @@
 package com.icash.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+@Entity
+@Table(name = "user")
 public class User {
 
+    @Id
+    @Column(name = "user_id")
     private String userID;
 
+    @Column
     private String username;
 
+    @Column
     private String email;
 
+    @Column
     private String password;
 
+    @Column
     private Boolean enable;
 
+    @Column
     private String address;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column
     private String gender;
 
-    private Double iCoins;
+    @Column(name = "current_icoins")
+    private Integer currentICoins;
 
+    @Column
     private String level;
 
+    @Column(name = "reference_link")
     private String referenceLink;
+
+    @Column(name = "reference_code")
+    private String referenceCode;
+
+    @Column(name = "total_icoins")
+    private Integer totalICoins;
+
+    @Column(name = "number_of_referenced")
+    private Integer numberOfReferenced;
+
+    @Column(name = "registration_time")
+    private Date registrationTime;
 
     public String getUserID() {
         return userID;
@@ -88,14 +120,6 @@ public class User {
         this.gender = gender;
     }
 
-    public Double getiCoins() {
-        return iCoins;
-    }
-
-    public void setiCoins(Double iCoins) {
-        this.iCoins = iCoins;
-    }
-
     public String getLevel() {
         return level;
     }
@@ -110,5 +134,45 @@ public class User {
 
     public void setReferenceLink(String referenceLink) {
         this.referenceLink = referenceLink;
+    }
+
+    public String getReferenceCode() {
+        return referenceCode;
+    }
+
+    public void setReferenceCode(String referenceCode) {
+        this.referenceCode = referenceCode;
+    }
+
+    public Integer getCurrentICoins() {
+        return currentICoins;
+    }
+
+    public void setCurrentICoins(Integer currentICoins) {
+        this.currentICoins = currentICoins;
+    }
+
+    public Integer getTotalICoins() {
+        return totalICoins;
+    }
+
+    public void setTotalICoins(Integer totalICoins) {
+        this.totalICoins = totalICoins;
+    }
+
+    public Integer getNumberOfReferenced() {
+        return numberOfReferenced;
+    }
+
+    public void setNumberOfReferenced(Integer numberOfReferenced) {
+        this.numberOfReferenced = numberOfReferenced;
+    }
+
+    public Date getRegistrationTime() {
+        return registrationTime;
+    }
+
+    public void setRegistrationTime(Date registrationTime) {
+        this.registrationTime = registrationTime;
     }
 }

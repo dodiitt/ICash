@@ -1,44 +1,37 @@
 package com.icash.entity;
 
+import com.icash.icash_enum.SettingType;
+
 public class Setting {
 
-    private Double minimumCash;
+    private String id;
 
-    private Double dailyBonus;
+    private SettingType settingType;
 
-    private Double monthlyBonus;
+    private Double minimumAmount;
 
-    private Integer referenceFriendRequired;
-
-    public Double getMinimumCash() {
-        return minimumCash;
+    public String getId() {
+        return id;
     }
 
-    public void setMinimumCash(Double minimumCash) {
-        this.minimumCash = minimumCash;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Double getDailyBonus() {
-        return dailyBonus;
+    public SettingType getSettingType() {
+        return settingType;
     }
 
-    public void setDailyBonus(Double dailyBonus) {
-        this.dailyBonus = dailyBonus;
+    public void setSettingType(SettingType settingType) {
+        this.settingType = settingType;
     }
 
-    public Double getMonthlyBonus() {
-        return monthlyBonus;
+    public Double getMinimumAmount() {
+        return minimumAmount;
     }
 
-    public void setMonthlyBonus(Double monthlyBonus) {
-        this.monthlyBonus = monthlyBonus;
+    public void setMinimumAmount(Double minimumAmount) {
+        this.minimumAmount = minimumAmount;
     }
 
-    public Integer getReferenceFriendRequired() {
-        return referenceFriendRequired;
-    }
-
-    public void setReferenceFriendRequired(Integer referenceFriendRequired) {
-        this.referenceFriendRequired = referenceFriendRequired;
-    }
 }

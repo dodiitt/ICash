@@ -1,5 +1,5 @@
 package com.icash.icash_enum;
 
 public enum EarningType {
-    OFFER, DAILY_BONUS, MONTHLY_BONUS, LOTTO
+    OFFER, DAILY_BONUS, WEEKLY_BONUS, MONTHLY_BONUS, LOTTO, REFERENCE_BONUS
 }

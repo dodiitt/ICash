@@ -12,6 +12,8 @@ public class RedeemHistory {
 
     private Double cashRedeem;
 
+    private Double iCoinsRedeem;
+
     private PaymentType paymentType;
 
     private Date time;
@@ -64,5 +66,13 @@ public class RedeemHistory {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public Double getiCoinsRedeem() {
+        return iCoinsRedeem;
+    }
+
+    public void setiCoinsRedeem(Double iCoinsRedeem) {
+        this.iCoinsRedeem = iCoinsRedeem;
     }
 }

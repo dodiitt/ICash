@@ -13,9 +13,9 @@ public class EarningHistory {
 
     private String thirdPartyProviderName;
 
-    private String cashEarned;
+    private Double iCoinsEarned;
 
-    private String cashPaid;
+    private Double iCoinsPaid;
 
     private Date time;
 
@@ -49,20 +49,20 @@ public class EarningHistory {
         this.thirdPartyProviderName = thirdPartyProviderName;
     }
 
-    public String getCashEarned() {
-        return cashEarned;
+    public Double getiCoinsEarned() {
+        return iCoinsEarned;
     }
 
-    public void setCashEarned(String cashEarned) {
-        this.cashEarned = cashEarned;
+    public void setiCoinsEarned(Double iCoinsEarned) {
+        this.iCoinsEarned = iCoinsEarned;
     }
 
-    public String getCashPaid() {
-        return cashPaid;
+    public Double getiCoinsPaid() {
+        return iCoinsPaid;
     }
 
-    public void setCashPaid(String cashPaid) {
-        this.cashPaid = cashPaid;
+    public void setiCoinsPaid(Double iCoinsPaid) {
+        this.iCoinsPaid = iCoinsPaid;
     }
 
     public Date getTime() {

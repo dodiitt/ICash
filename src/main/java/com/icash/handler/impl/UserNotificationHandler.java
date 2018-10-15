@@ -15,8 +15,8 @@ public class UserNotificationHandler extends AbstractNotificationService {
 
     private static final Log LOG = LogFactory.getLog(UserNotificationHandler.class);
 
-    @Autowired
-    private MailSender javaMailSender;
+//    @Autowired
+//    private MailSender javaMailSender;
 
     @Autowired
     private UserService userService;

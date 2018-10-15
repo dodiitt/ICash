@@ -14,6 +14,8 @@ public class Payment {
 
     private String cardNumber;
 
+    private String accountNumber;
+
     private String expiredDay;
 
     private String expiredMonth;
@@ -100,5 +102,13 @@ public class Payment {
 
     public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }
