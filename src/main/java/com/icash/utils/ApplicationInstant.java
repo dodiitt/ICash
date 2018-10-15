@@ -11,4 +11,5 @@ public class ApplicationInstant {
      * COMMONS URL
      */
     public static final String PUBLIC_URL = "/public/**";
+    public static final String REFERENCE_LINK = "/refer/";
 }

@@ -41,25 +41,25 @@ public class PostbackController {
 
     @RequestMapping(value = "/offer-toro", method = RequestMethod.GET)
     protected void processOfferToroPostBack(@RequestBody OfferToroResponse offerToroResponse){
-        LOGGER.info("ICash received new callbacks from OfferToro with user : ");
+        LOGGER.info("ICash received new callbacks from OfferToro for user : ");
         offerToroHandler.handle(offerToroResponse);
     }
 
     @RequestMapping(value = "/super-rewards", method = RequestMethod.GET)
     protected void processSuperRewardsPostBack(@RequestBody SuperRewardResponse superRewardResponse){
-        LOGGER.info("ICash received new callbacks from SuperRewards with user : ");
+        LOGGER.info("ICash received new callbacks from SuperRewards for user : ");
         superRewardsHandler.handle(superRewardResponse);
     }
 
     @RequestMapping(value = "/peanut-labs", method = RequestMethod.GET)
     protected void processPeanutLabsPostBack(@RequestBody PeanutLabsResponse peanutLabsResponse){
-        LOGGER.info("ICash received new callbacks from PeanutLabs with user : ");
+        LOGGER.info("ICash received new callbacks from PeanutLabs for user : ");
         peanutLabsHandler.handle(peanutLabsResponse);
     }
 
     @RequestMapping(value = "/sample-cube", method = RequestMethod.GET)
     protected void processSampleCube(@RequestBody SampleCubeResponse sampleCubeResponse){
-        LOGGER.info("ICash received new callbacks from SampleCube with user : ");
+        LOGGER.info("ICash received new callbacks from SampleCube for user : ");
         sampleCubeHandler.handle(sampleCubeResponse);
     }
 }

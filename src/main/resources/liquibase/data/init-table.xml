@@ -31,4 +31,32 @@
             <column name="registration_time" type="datetime"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="user">
+            <column name="user_id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enable" type="BIT(1)"/>
+            <column name="address" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)"/>
+            <column name="gender" type="varchar(255)"/>
+            <column name="current_icoins" type="int"/>
+            <column name="total_icoins" type="int"/>
+            <column name="level" type="varchar(20)"/>
+            <column name="reference_link" type="varchar(255)"/>
+            <column name="reference_code" type="varchar(10)"/>
+            <column name="number_of_referenced" type="int"/>
+            <column name="registration_time" type="datetime"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

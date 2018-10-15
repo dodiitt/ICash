@@ -1,6 +1,7 @@
 package com.icash.controller;
 
 import com.icash.exception.UserAlreadyExistException;
+import com.icash.model.ErrorMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class AdviceControllerHandler {
     @ResponseBody
     public ResponseEntity<?> handlerUserAlreadyExist(UserAlreadyExistException ex){
         LOGGER.error("New user was duplicate email from DB.");
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT) ;
+        ErrorMessage errorMessage = new ErrorMessage();
+        errorMessage.setMessage("Username already exist in system.");
+
+        return new ResponseEntity<>(errorMessage, HttpStatus.CONFLICT) ;
     }
 }

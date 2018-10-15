@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+
 @Component
 public class UserDetailServiceImpl implements UserDetailsService {
 
@@ -20,6 +22,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if(user == null){
             throw new UsernameNotFoundException("Username or password is invalid");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.getEnable(), true, true, true, null);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.getEnable(), true, true, true, Collections.emptyList());
     }
 }

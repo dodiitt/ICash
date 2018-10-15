@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(ApplicationInstant.PUBLIC_URL).permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic().realmName(ApplicationInstant.ICASH_REALM).authenticationEntryPoint(customAuthenticationEntryPoint)
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
     }
 
     @Bean
