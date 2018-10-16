@@ -31,6 +31,7 @@
             <column name="reference_code" type="varchar(10)"/>
             <column name="number_of_referenced" type="int"/>
             <column name="registration_time" type="datetime"/>
+            <column name="avatar_image" type="LONGTEXT"/>
         </createTable>
     </changeSet>
 

@@ -14,6 +14,10 @@ public class UserUtils {
     @Autowired
     private UserService userService;
 
+    /**
+     *
+     * @return
+     */
     public User currentUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 

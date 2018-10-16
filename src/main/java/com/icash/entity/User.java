@@ -59,6 +59,9 @@ public class User {
     @Column(name = "registration_time")
     private Date registrationTime;
 
+    @Column(name = "avatar_image")
+    private String avatarImage;
+
     public String getUserID() {
         return userID;
     }
@@ -185,5 +188,13 @@ public class User {
 
     public void setActiveCode(String activeCode) {
         this.activeCode = activeCode;
+    }
+
+    public String getAvatarImage() {
+        return avatarImage;
+    }
+
+    public void setAvatarImage(String avatarImage) {
+        this.avatarImage = avatarImage;
     }
 }
