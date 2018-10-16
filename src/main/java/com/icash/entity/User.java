@@ -26,6 +26,9 @@ public class User {
     @Column
     private Boolean enable;
 
+    @Column(name = "active_code")
+    private String activeCode;
+
     @Column
     private String address;
 
@@ -174,5 +177,13 @@ public class User {
 
     public void setRegistrationTime(Date registrationTime) {
         this.registrationTime = registrationTime;
+    }
+
+    public String getActiveCode() {
+        return activeCode;
+    }
+
+    public void setActiveCode(String activeCode) {
+        this.activeCode = activeCode;
     }
 }

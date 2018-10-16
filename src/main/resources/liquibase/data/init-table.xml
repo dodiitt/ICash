@@ -4,6 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd ">
 
+    <!-- 1. USER -->
     <changeSet id="1.00" author="tuan_le">
         <createTable tableName="user">
             <column name="user_id" type="varchar(36)">
@@ -13,12 +14,13 @@
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="password" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="enable" type="BIT(1)"/>
+            <column name="active_code" type="varchar(255)"/>
             <column name="address" type="varchar(255)"/>
             <column name="phone_number" type="varchar(255)"/>
             <column name="gender" type="varchar(255)"/>
@@ -32,31 +34,105 @@
         </createTable>
     </changeSet>
 
+    <!-- 2. CHALLENGE -->
     <changeSet id="1.01" author="tuan_le">
-        <createTable tableName="user">
-            <column name="user_id" type="varchar(36)">
+        <createTable tableName="challenge">
+            <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="username" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="password" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="enable" type="BIT(1)"/>
-            <column name="address" type="varchar(255)"/>
-            <column name="phone_number" type="varchar(255)"/>
-            <column name="gender" type="varchar(255)"/>
-            <column name="current_icoins" type="int"/>
+            <column name="level" type="varchar(5)"/>
             <column name="total_icoins" type="int"/>
-            <column name="level" type="varchar(20)"/>
-            <column name="reference_link" type="varchar(255)"/>
-            <column name="reference_code" type="varchar(10)"/>
-            <column name="number_of_referenced" type="int"/>
-            <column name="registration_time" type="datetime"/>
+            <column name="number_of_reference" type="int"/>
+            <column name="daily_bonus" type="int"/>
+            <column name="monthly_bonus" type="ints"/>
+            <column name="yearly_bonus" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 3. EARNING HISTORY -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="earning_history">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(36)"/>
+            <column name="earning_title" type="varchar(255)"/>
+            <column name="third_party_provider_name" type="varchar(255)"/>
+            <column name="icoins_earned" type="int"/>
+            <column name="icoins_paid" type="int"/>
+            <column name="time" type="datetime"/>
+            <column name="device_name" type="varchar(255)"/>
+            <column name="offer_type" type="varchar(255)"/>
+            <column name="earning_type" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 4. SETTING -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="setting">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="setting_type" type="varchar(255)"/>
+            <column name="minimum_amount" type="double"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 5. LOTTO -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="lotto">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(36)"/>
+            <column name="betting_number" type="int"/>
+            <column name="betting_icoins" type="int"/>
+            <column name="betting_time" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 6. NOTIFICATION -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="notification">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(36)"/>
+            <column name="message" type="varchar(255)"/>
+            <column name="time" type="datetime"/>
+            <column name="is_deleted" type="BIT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 7. REDEEM HISTORY -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="redeem_history">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(36)"/>
+            <column name="cash_redeem" type="double"/>
+            <column name="icoins_redeem" type="int"/>
+            <column name="payment_type" type="varchar(30)"/>
+            <column name="pay_pal_email" type="varchar(255)"/>
+            <column name="bank_name" type="varchar(255)"/>
+            <column name="card_number" type="varchar(255)"/>
+            <column name="account_number" type="varchar(255)"/>
+            <column name="holder_name" type="varchar(255)"/>
+            <column name="time" type="datetime"/>
+            <column name="device_name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 8. REFERENCE -->
+    <changeSet id="1.01" author="tuan_le">
+        <createTable tableName="redeem_history">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(36)"/>
+            <column name="friend_id" type="varchar(36)"/>
+            <column name="total_icons_of_friend" type="int"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

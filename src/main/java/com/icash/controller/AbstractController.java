@@ -20,10 +20,13 @@ public abstract class AbstractController {
         user.setEmail(registerRequest.getEmail());
         user.setGender(registerRequest.getGender());
         user.setPassword(this.getBCryptPasswordEncoder().encode(registerRequest.getPassword()));
+
         user.setLevel(String.valueOf(Level.LV_1.getValue()));
         user.setRegistrationTime(Calendar.getInstance().getTime());
         user.setUserID(UUID.randomUUID().toString());
-        user.setEnable(true);
+
+        user.setEnable(false);
+
         user.setCurrentICoins(0);
         user.setTotalICoins(0);
         user.setNumberOfReferenced(0);

@@ -5,6 +5,7 @@ import com.icash.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +16,27 @@ public class UserNotificationHandler extends AbstractNotificationService {
 
     private static final Log LOG = LogFactory.getLog(UserNotificationHandler.class);
 
-//    @Autowired
-//    private MailSender javaMailSender;
+    @Autowired
+    private MailSender javaMailSender;
 
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private Environment environment;
+
     @Override
     public void notify(String userID, String message) {
+
+    }
+
+    @Override
+    public void notifyActiveAccount(String email, String message) {
+
+    }
+
+    @Override
+    public void notifyForgotPassword(String email, String newPassword) {
 
     }
 

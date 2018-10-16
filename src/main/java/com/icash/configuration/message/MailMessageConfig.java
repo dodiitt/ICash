@@ -11,8 +11,6 @@ public class MailMessageConfig {
 
     private String[] cc;
 
-    private String[] bc;
-
     public String getSubject() {
         return subject;
     }
@@ -51,13 +49,5 @@ public class MailMessageConfig {
 
     public void setCc(String[] cc) {
         this.cc = cc;
-    }
-
-    public String[] getBc() {
-        return bc;
-    }
-
-    public void setBc(String[] bc) {
-        this.bc = bc;
     }
 }

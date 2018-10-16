@@ -1,20 +1,34 @@
 package com.icash.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "challenge")
 public class Challenge {
 
+    @Id
     private String id;
 
+    @Column
     private String level;
 
-    private Double totalICoins;
+    @Column(name = "total_icoins")
+    private Integer totalICoins;
 
+    @Column(name = "number_of_reference")
     private Integer numberOfReferenced;
 
-    private Double dailyBonus;
+    @Column(name = "daily_bonus")
+    private Integer dailyBonus;
 
-    private Double monthlyBonus;
+    @Column(name = "monthly_bonus")
+    private Integer monthlyBonus;
 
-    private Double yearlyBonus;
+    @Column(name = "yearly_bonus")
+    private Integer yearlyBonus;
 
     public String getId() {
         return id;
@@ -32,11 +46,11 @@ public class Challenge {
         this.level = level;
     }
 
-    public Double getTotalICoins() {
+    public Integer getTotalICoins() {
         return totalICoins;
     }
 
-    public void setTotalICoins(Double totalICoins) {
+    public void setTotalICoins(Integer totalICoins) {
         this.totalICoins = totalICoins;
     }
 
@@ -48,27 +62,27 @@ public class Challenge {
         this.numberOfReferenced = numberOfReferenced;
     }
 
-    public Double getDailyBonus() {
+    public Integer getDailyBonus() {
         return dailyBonus;
     }
 
-    public void setDailyBonus(Double dailyBonus) {
+    public void setDailyBonus(Integer dailyBonus) {
         this.dailyBonus = dailyBonus;
     }
 
-    public Double getMonthlyBonus() {
+    public Integer getMonthlyBonus() {
         return monthlyBonus;
     }
 
-    public void setMonthlyBonus(Double monthlyBonus) {
+    public void setMonthlyBonus(Integer monthlyBonus) {
         this.monthlyBonus = monthlyBonus;
     }
 
-    public Double getYearlyBonus() {
+    public Integer getYearlyBonus() {
         return yearlyBonus;
     }
 
-    public void setYearlyBonus(Double yearlyBonus) {
+    public void setYearlyBonus(Integer yearlyBonus) {
         this.yearlyBonus = yearlyBonus;
     }
 }
