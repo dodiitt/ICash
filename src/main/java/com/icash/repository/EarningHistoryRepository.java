@@ -1,12 +1,12 @@
 package com.icash.repository;
 
-import com.icash.entity.RedeemHistory;
+import com.icash.entity.EarningHistory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RedeemHistoryRepository extends PagingAndSortingRepository<RedeemHistory, String> {
-    Page<RedeemHistory> findAllRedeemHistoryByUserID(String userID, Pageable pageable);
+public interface EarningHistoryRepository extends PagingAndSortingRepository<EarningHistory, String> {
+    Page<EarningHistory> findAllEarningHistoryByUserID(String userID, Pageable pageable);
 }

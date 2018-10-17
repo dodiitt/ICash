@@ -18,11 +18,14 @@ public class Notification {
     @Column(name = "user_id")
     private String userID;
 
+    @Column
+    private String subject;
+
     @Column(name = "time")
     private Date time;
 
     @Column(name = "is_deleted")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 
     public String getId() {
         return id;
@@ -62,5 +65,13 @@ public class Notification {
 
     public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }
