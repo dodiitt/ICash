@@ -4,8 +4,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd ">
 
-    <!-- 1. USER -->
-    <changeSet id="1.00" author="tuan_le">
+    <changeSet id="1.001" author="tuan_le">
+        <!-- 1. USER -->
         <createTable tableName="user">
             <column name="user_id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -33,10 +33,9 @@
             <column name="registration_time" type="datetime"/>
             <column name="avatar_image" type="LONGTEXT"/>
         </createTable>
-    </changeSet>
 
-    <!-- 2. CHALLENGE -->
-    <changeSet id="1.01" author="tuan_le">
+
+        <!-- 2. CHALLENGE -->
         <createTable tableName="challenge">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -45,13 +44,11 @@
             <column name="total_icoins" type="int"/>
             <column name="number_of_reference" type="int"/>
             <column name="daily_bonus" type="int"/>
-            <column name="monthly_bonus" type="ints"/>
+            <column name="monthly_bonus" type="int"/>
             <column name="yearly_bonus" type="int"/>
         </createTable>
-    </changeSet>
 
-    <!-- 3. EARNING HISTORY -->
-    <changeSet id="1.01" author="tuan_le">
+        <!-- 3. EARNING HISTORY -->
         <createTable tableName="earning_history">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -66,10 +63,8 @@
             <column name="offer_type" type="varchar(255)"/>
             <column name="earning_type" type="varchar(255)"/>
         </createTable>
-    </changeSet>
 
-    <!-- 4. SETTING -->
-    <changeSet id="1.01" author="tuan_le">
+        <!-- 4. SETTING -->
         <createTable tableName="setting">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -77,10 +72,8 @@
             <column name="setting_type" type="varchar(255)"/>
             <column name="minimum_amount" type="double"/>
         </createTable>
-    </changeSet>
 
-    <!-- 5. LOTTO -->
-    <changeSet id="1.01" author="tuan_le">
+        <!-- 5. LOTTO -->
         <createTable tableName="lotto">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -90,10 +83,8 @@
             <column name="betting_icoins" type="int"/>
             <column name="betting_time" type="datetime"/>
         </createTable>
-    </changeSet>
 
-    <!-- 6. NOTIFICATION -->
-    <changeSet id="1.01" author="tuan_le">
+        <!-- 6. NOTIFICATION -->
         <createTable tableName="notification">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -103,10 +94,8 @@
             <column name="time" type="datetime"/>
             <column name="is_deleted" type="BIT(1)"/>
         </createTable>
-    </changeSet>
 
-    <!-- 7. REDEEM HISTORY -->
-    <changeSet id="1.01" author="tuan_le">
+        <!-- 7. REDEEM HISTORY -->
         <createTable tableName="redeem_history">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -123,11 +112,9 @@
             <column name="time" type="datetime"/>
             <column name="device_name" type="varchar(255)"/>
         </createTable>
-    </changeSet>
 
-    <!-- 8. REFERENCE -->
-    <changeSet id="1.01" author="tuan_le">
-        <createTable tableName="redeem_history">
+        <!-- 8. REFERENCE -->
+        <createTable tableName="reference">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

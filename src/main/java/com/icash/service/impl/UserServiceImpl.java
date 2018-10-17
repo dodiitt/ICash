@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserUtils userUtils;
+
+    @Autowired
+    private TaskExecutor taskExecutor;
 
     @Override
     public User getUserById(String id) {
@@ -62,7 +66,7 @@ public class UserServiceImpl implements UserService {
         if(userInDB == null || !userInDB.getEnable()){
             String activeCode = generateActiveCode();
 
-            sendActiveCode(user.getEmail(), activeCode);
+            taskExecutor.execute(() -> sendActiveCode(user.getEmail(), user.getUsername(), activeCode));
 
             user.setActiveCode(DigestUtils.md5Hex(activeCode));
             return this.saveUser(user);
@@ -103,7 +107,7 @@ public class UserServiceImpl implements UserService {
         if(!user.getEnable().equals(true)) {
             String activeCode = generateActiveCode();
 
-            sendActiveCode(email, activeCode);
+            sendActiveCode(email, user.getUsername(), activeCode);
 
             user.setActiveCode(DigestUtils.md5Hex(activeCode));
             this.saveUser(user);
@@ -148,8 +152,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private void sendActiveCode(String email, String activeCode) {
-        notificationService.notifyActiveAccount(email, activeCode);
+    private void sendActiveCode(String email, String username, String activeCode) {
+        notificationService.notifyActiveAccount(email, username, activeCode);
     }
 
     private String generateActiveCode() {

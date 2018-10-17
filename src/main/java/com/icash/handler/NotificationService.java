@@ -11,9 +11,10 @@ public interface NotificationService {
     /**
      *
      * @param email
-     * @param message
+     * @param username
+     * @param code
      */
-    void notifyActiveAccount(String email, String message);
+    void notifyActiveAccount(String email, String username, String code);
 
     /**
      *

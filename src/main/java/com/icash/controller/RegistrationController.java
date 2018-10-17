@@ -38,7 +38,7 @@ public class RegistrationController extends AbstractController{
         User user = super.wrapUser(registerRequest);
         this.userService.registerNewUser(user);
 
-        LOGGER.info("Register new user with email [{}] success." + registerRequest.getEmail());
+        LOGGER.info("Register new user with email [{}] success.", registerRequest.getEmail());
         return new ResponseEntity<>(user.getEmail(), HttpStatus.CREATED);
     }
 

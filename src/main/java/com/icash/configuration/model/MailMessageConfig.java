@@ -1,6 +1,7 @@
-package com.icash.configuration.message;
+package com.icash.configuration.model;
 
 public class MailMessageConfig {
+
     private String subject;
 
     private String content;
