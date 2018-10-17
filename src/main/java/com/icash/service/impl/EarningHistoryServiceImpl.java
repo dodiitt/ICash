@@ -24,7 +24,7 @@ public class EarningHistoryServiceImpl implements EarningHistoryService {
         if (page <= 0) {
             page = 1;
         }
-        return this.earningHistoryRepository.findAllEarningHistoryByUserID(userID, new PageRequest(page - 1, size, orderBy()));
+        return this.earningHistoryRepository.findAllEarningHistoryByUserId(userID, new PageRequest(page - 1, size, orderBy()));
     }
 
     private Sort orderBy() {

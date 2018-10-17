@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EarningHistoryRepository extends PagingAndSortingRepository<EarningHistory, String> {
-    Page<EarningHistory> findAllEarningHistoryByUserID(String userID, Pageable pageable);
+    Page<EarningHistory> findAllEarningHistoryByUserId(String userID, Pageable pageable);
 }

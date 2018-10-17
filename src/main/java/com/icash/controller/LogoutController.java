@@ -1,5 +1,8 @@
 package com.icash.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
@@ -17,11 +20,18 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping(value = "/protected")
+@Api(value = "Log-out controller", description = "It's used to remove current user context holder.")
 public class LogoutController {
 
     private static final Log LOGGER = LogFactory.getLog(LogoutController.class);
 
     @GetMapping(value = "/log-out")
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Successfully log-out User"),
+            @ApiResponse(code = 401, message = "You are not authenticated yet to access the resource"),
+            @ApiResponse(code = 403, message = "User not active yet."),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")}
+    )
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

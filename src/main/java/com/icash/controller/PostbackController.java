@@ -5,6 +5,7 @@ import com.icash.provider_response.OfferToroResponse;
 import com.icash.provider_response.PeanutLabsResponse;
 import com.icash.provider_response.SampleCubeResponse;
 import com.icash.provider_response.SuperRewardResponse;
+import io.swagger.annotations.Api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/public/provider/post-back")
+@Api(value = "Callbacks controller", description = "This controller is used to called by 3th provider.")
 public class PostbackController {
 
     private static final Log LOGGER = LogFactory.getLog(PostbackController.class);

@@ -2,6 +2,7 @@ package com.icash.controller;
 
 import com.icash.exception.*;
 import com.icash.model.ErrorMessage;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
+@Api(value = "Advice controller", description = "It's used to handle exception and throw the friendly message for client.")
 public class ControllerAdviceHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerAdviceHandler.class);
