@@ -22,7 +22,7 @@ public class RegisterRequest implements Serializable {
     private String password;
 
     @NotEmpty
-    @ApiModelProperty(notes = "The gender for User", required = true, example = "[male, female]")
+    @ApiModelProperty(notes = "The gender for User", required = true, example = "male")
     private String gender;
 
     public String getUsername() {
