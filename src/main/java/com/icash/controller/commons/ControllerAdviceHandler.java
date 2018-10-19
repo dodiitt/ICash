@@ -1,4 +1,4 @@
-package com.icash.controller;
+package com.icash.controller.commons;
 
 import com.icash.exception.*;
 import com.icash.model.ErrorMessage;

@@ -1,4 +1,4 @@
-package com.icash.controller;
+package com.icash.controller.user;
 
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;

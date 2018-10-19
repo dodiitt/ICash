@@ -1,4 +1,4 @@
-package com.icash.controller;
+package com.icash.controller.user;
 
 import com.icash.controller.response.EarningHistoriesResponse;
 import com.icash.controller.response.NotificationResponse;

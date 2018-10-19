@@ -1,4 +1,4 @@
-package com.icash.controller;
+package com.icash.controller.provider;
 
 import com.icash.provider.ProviderHandler;
 import com.icash.provider_response.OfferToroResponse;

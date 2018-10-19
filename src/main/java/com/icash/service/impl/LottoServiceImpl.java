@@ -19,4 +19,14 @@ public class LottoServiceImpl implements LottoService {
     public List<Lotto> getAllBettingInTime(String userID, Date startTime, Date endTime) {
         return null;
     }
+
+    @Override
+    public List<Lotto> getAllLottosInTime(Date startTime, Date endTime) {
+        return null;
+    }
+
+    @Override
+    public void removeLotto(String ID) {
+
+    }
 }

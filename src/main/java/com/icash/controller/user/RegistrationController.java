@@ -1,5 +1,6 @@
-package com.icash.controller;
+package com.icash.controller.user;
 
+import com.icash.controller.AbstractController;
 import com.icash.controller.request.ForgotPasswordRequest;
 import com.icash.controller.request.RegisterRequest;
 import com.icash.controller.request.ResetPasswordRequest;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 
 @RestController
 @Api(value = "Registration controller", description = "It's used to register and active a new account.")
-public class RegistrationController extends AbstractController{
+public class RegistrationController extends AbstractController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 

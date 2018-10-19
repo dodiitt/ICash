@@ -1,4 +1,4 @@
-package com.icash.controller;
+package com.icash.controller.commons;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
