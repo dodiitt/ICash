@@ -125,7 +125,8 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("User not found with email : " + email);
         }
         String newPassword = this.generateNewPassword();
-        this.notificationService.notifyForgotPassword(email, newPassword);
+
+        this.taskExecutor.execute(() -> notificationService.notifyForgotPassword(email, newPassword));
 
         user.setPassword(passwordEncoder.encode(newPassword));
         this.saveUser(user);

@@ -1,5 +1,6 @@
 package com.icash.controller;
 
+import com.icash.controller.request.ForgotPasswordRequest;
 import com.icash.controller.request.RegisterRequest;
 import com.icash.controller.request.ResetPasswordRequest;
 import com.icash.entity.User;
@@ -94,18 +95,18 @@ public class RegistrationController extends AbstractController{
 
     /**
      *
-     * @param email
+     * @param request
      * @throws UserNotFoundException
      */
-    @GetMapping(value = "/public/users/password/for-got/{email}")
+    @GetMapping(value = "/public/users/password/for-got")
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "For-got password")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Processing the for-got password success."),
             @ApiResponse(code = 400, message = "System not found with passing email")}
     )
-    public void forGotPassword(@PathVariable String email) throws UserNotFoundException {
-        this.userService.forGotPassword(email);
+    public void forGotPassword(@Valid @RequestBody ForgotPasswordRequest request) throws UserNotFoundException {
+        this.userService.forGotPassword(request.getEmail());
     }
 
     /**

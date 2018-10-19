@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.MailException;
-import org.springframework.mail.MailMessage;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
@@ -29,6 +28,10 @@ public class UserNotificationHandler extends AbstractNotificationService {
     @Autowired
     @Qualifier(value = "activeUserProperties")
     private NotificationMessageProperties activeUserProperties;
+
+    @Autowired
+    @Qualifier(value = "forgotPasswordProperties")
+    private NotificationMessageProperties forgotPasswordProperties;
 
     @Override
     public void notify(String userID, String message) {
@@ -56,7 +59,21 @@ public class UserNotificationHandler extends AbstractNotificationService {
 
     @Override
     public void notifyForgotPassword(String email, String newPassword) {
+        LOGGER.info("Begin send new password for user [{}]", email);
+        try{
+            String fullyMessage = String.format(this.forgotPasswordProperties.getMessage(), email, newPassword);
 
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setFrom(this.forgotPasswordProperties.getFrom());
+            mailMessage.setTo(email);
+            mailMessage.setSubject(this.forgotPasswordProperties.getSubject());
+            mailMessage.setText(fullyMessage);
+            javaMailSender.send(mailMessage);
+            LOGGER.info("Send new password for user [{}] success.", email);
+        }catch (MailException e){
+            LOGGER.error("Error while sending new password for user [{}], detail here : {}", email, e.getMessage());
+            e.getStackTrace();
+        }
     }
 
     @Override

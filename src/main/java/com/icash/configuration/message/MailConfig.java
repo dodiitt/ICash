@@ -48,4 +48,10 @@ public class MailConfig {
     public NotificationMessageProperties activeUserProperties() {
         return new NotificationMessageProperties();
     }
+
+    @Bean(name = "forgotPasswordProperties")
+    @ConfigurationProperties(prefix = "app.notification.forgot-password")
+    public NotificationMessageProperties forgotPasswordProperties(){
+        return new NotificationMessageProperties();
+    }
 }
