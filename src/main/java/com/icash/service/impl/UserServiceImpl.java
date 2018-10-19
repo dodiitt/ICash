@@ -61,16 +61,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerNewUser(User user) throws UserAlreadyExistException {
+    public User registerNewUser(User user) throws UserAlreadyExistException, UserHasCreatedButNotActiveYetException {
         User userInDB = this.loadUserByEmail(user.getEmail());
-        if(userInDB == null || !userInDB.getEnable()){
+        if (userInDB == null) {
             String activeCode = generateActiveCode();
 
             taskExecutor.execute(() -> sendActiveCode(user.getEmail(), user.getUsername(), activeCode));
 
             user.setActiveCode(DigestUtils.md5Hex(activeCode));
             return this.saveUser(user);
-        }else {
+        } else if (!userInDB.getEnable()) {
+            LOGGER.error("User with email [{}] has already exist in system BUT not active yet.", user.getEmail());
+            throw new UserHasCreatedButNotActiveYetException("User has already exist with email : " + user.getEmail() + " ,but not active!!");
+        } else {
+            LOGGER.error("User with email [{}] has already exist in system", user.getEmail());
             throw new UserAlreadyExistException("User already exist with email : " + user.getEmail());
         }
     }
@@ -83,7 +87,7 @@ public class UserServiceImpl implements UserService {
             LOGGER.error("User not found with email [{}].", email);
             throw new UserNotFoundException("User not found with email : " + email);
         }
-        if(!user.getEnable().equals(true)) {
+        if (!user.getEnable().equals(true)) {
             if (DigestUtils.md5Hex(code).equals(user.getActiveCode())) {
                 user.setEnable(true);
                 this.saveUser(user);
@@ -92,7 +96,7 @@ public class UserServiceImpl implements UserService {
                 LOGGER.error("Active user not success with invalid code [{}] ", code);
                 throw new ActiveCodeInvalid("Invalid active code : " + code);
             }
-        }else{
+        } else {
             throw new UserHasAlreadyActive("User is already active before.");
         }
     }
@@ -100,11 +104,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resendActiveCode(String email) throws UserNotFoundException, UserHasAlreadyActive {
         User user = this.loadUserByEmail(email);
-        if(user == null){
+        if (user == null) {
             LOGGER.error("User not found with email [{}].", email);
             throw new UserNotFoundException("User not found with email : " + email);
         }
-        if(!user.getEnable().equals(true)) {
+        if (!user.getEnable().equals(true)) {
             String activeCode = generateActiveCode();
 
             sendActiveCode(email, user.getUsername(), activeCode);
@@ -112,7 +116,7 @@ public class UserServiceImpl implements UserService {
             user.setActiveCode(DigestUtils.md5Hex(activeCode));
             this.saveUser(user);
             LOGGER.info("Resend active code success for user [{}] ", email);
-        }else{
+        } else {
             throw new UserHasAlreadyActive("User is already active before");
         }
     }
@@ -120,7 +124,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void forGotPassword(String email) throws UserNotFoundException {
         User user = this.loadUserByEmail(email);
-        if(user == null){
+        if (user == null) {
             LOGGER.error("User not found with email [{}] ", email);
             throw new UserNotFoundException("User not found with email : " + email);
         }
@@ -140,15 +144,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetPassword(ResetPasswordRequest resetPasswordRequest) throws UserNotFoundException, OldPasswordInvalidException {
         User user = this.userUtils.currentUser();
-        if(user == null){
+        if (user == null) {
             LOGGER.error("User not found in current context holder.");
             throw new UserNotFoundException("User not found in current context holder.");
         }
-        if(passwordEncoder.matches(resetPasswordRequest.getOldPassword(), user.getPassword())){
+        if (passwordEncoder.matches(resetPasswordRequest.getOldPassword(), user.getPassword())) {
             user.setPassword(passwordEncoder.encode(resetPasswordRequest.getNewPassword()));
             this.saveUser(user);
             LOGGER.info("User [{}] has reset password success.", user.getEmail());
-        }else{
+        } else {
             throw new OldPasswordInvalidException("Old password in invalid.");
         }
     }

@@ -40,7 +40,7 @@ public interface UserService {
      * @return
      * @throws UserAlreadyExistException
      */
-    User registerNewUser(User user) throws UserAlreadyExistException;
+    User registerNewUser(User user) throws UserAlreadyExistException, UserHasCreatedButNotActiveYetException;
 
     /**
      *

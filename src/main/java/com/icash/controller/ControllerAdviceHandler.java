@@ -66,4 +66,14 @@ public class ControllerAdviceHandler {
 
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST) ;
     }
+
+    @ExceptionHandler(value = UserHasCreatedButNotActiveYetException.class)
+    @ResponseBody
+    public ResponseEntity<?> handlerUserHasCreatedButNotActiveYetException(UserHasCreatedButNotActiveYetException ex){
+        LOGGER.error(ex.getMessage());
+        ErrorMessage errorMessage = new ErrorMessage();
+        errorMessage.setMessage("Your account had created before but not active yet.");
+
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST) ;
+    }
 }

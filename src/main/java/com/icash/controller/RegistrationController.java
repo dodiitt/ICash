@@ -37,6 +37,7 @@ public class RegistrationController extends AbstractController{
      * @param registerRequest
      * @return
      * @throws UserAlreadyExistException
+     * @throws UserHasCreatedButNotActiveYetException
      */
     @PostMapping(value = "/public/users/register")
     @ApiOperation(value = "Register new user", response = String.class)
@@ -45,7 +46,10 @@ public class RegistrationController extends AbstractController{
             @ApiResponse(code = 409, message = "Conflict (Email have already exist in the system.)"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")}
     )
-    @ResponseBody public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest registerRequest) throws UserAlreadyExistException {
+    @ResponseBody public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest registerRequest) throws
+            UserAlreadyExistException,
+            UserHasCreatedButNotActiveYetException {
+
         LOGGER.info("Begin register new user with email : " +  registerRequest.getEmail());
         User user = super.wrapUser(registerRequest);
         this.userService.registerNewUser(user);
